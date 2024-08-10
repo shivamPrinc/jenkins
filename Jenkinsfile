@@ -10,9 +10,11 @@ pipeline {
             steps {
                 script {
                     // Install the Node.js version specified in the environment variable
-                    sh '''
-                        curl -sL https://deb.nodesource.com/setup_$NODE_VERSION | sudo -E bash -
-                        sudo apt-get install -y nodejs
+                    bat '''
+                        @echo off
+                        set NODE_VERSION=%NODE_VERSION%
+                        powershell -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://deb.nodesource.com/setup_$env:NODE_VERSION'))"
+                        npm install --global node
                     '''
                 }
             }
@@ -28,7 +30,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install npm dependencies
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
