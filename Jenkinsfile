@@ -21,7 +21,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git 'https://github.com/your-username/your-repo.git' // Replace with your repository URL
+                git 'https://github.com/shivamPrinc/jenkins.git' // Replace with your repository URL
             }
         }
 
